@@ -1,0 +1,2 @@
+# CutePets
+Tamagochi-like game
