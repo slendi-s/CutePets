@@ -103,7 +103,7 @@ private void Update()
 public class Drag_Hand : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 ```
 Интерфейс OnBeginDrag необходим для запоминания начальных позиций, в случае неудачи, можно вернуть квадрат на начальное положение
-```charp
+```csharp
 public void OnBeginDrag(PointerEventData eventData)
     {
     //Запоминаем объект
@@ -116,4 +116,26 @@ public void OnBeginDrag(PointerEventData eventData)
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 ```
-
+Интерфейс OnDrag переносит объект за курсором
+```csharp
+public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = Input.mousePosition;
+    }
+```
+OnEndDrag соответственно необходим для завершения переноса квадрата с ответом, в соответствующую ячейку
+```csharp
+public void OnEndDrag(PointerEventData eventData)
+    {
+    // Обнуляем переменную, где хранился объект
+        itemBeingDragged = null;
+    // Вносим объект в CanvasGroup
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
+    // Вносим объект в иерархию 
+        if (transform.parent != startParent)
+        {
+            transform.position = startPosition;
+        }
+        transform.position = startPosition;
+    }
+```
