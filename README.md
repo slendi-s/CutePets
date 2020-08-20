@@ -77,3 +77,18 @@ private void Update()
         }
     }
 ```
+## Спальня
+Чтобы восполнить индикатор сна, необходимо по нажатию кнопки дать питомцу отдохнуть n количество времени
+```csharp
+private void Update()
+    {
+    //Проверяем спит ли наш питомец
+        if (ChangeSceneOnLightning.onLightning && isDream)
+        {
+        //Затемняем экран
+            dreamback.SetActive(true);
+        //Пополняем индикатор
+            lightningBar.fillAmount += 0.001f;
+        }
+    }
+```
