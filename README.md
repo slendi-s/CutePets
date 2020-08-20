@@ -11,3 +11,41 @@
 В игровой комнате, необходимо ловить различные продукты в корзину за определенное время, по окончанию времени выдается опыт и валюта, а так же шкала потребности заполняется.
 ![screen](https://sun9-58.userapi.com/Ecjzq4pE72u-Iw92rNL6B8RnOWNRLmPyRD_ueg/E4Z5ws1dMbs.jpg)
 Объекты(продукты) создаются из префаба, текстура объекта выбирается случайно из общего списка текстур
+```csharp
+public void InitializedTexture()
+    {
+        triggerTexture[1] = "Apple";
+        triggerTexture[2] = "Bannana";
+        triggerTexture[3] = "Cabbage";
+        triggerTexture[4] = "Carrot";
+        triggerTexture[5] = "Eggplant";
+        triggerTexture[6] = "Orange";
+        triggerTexture[7] = "Radish";
+        triggerTexture[8] = "Strawberry";
+    }
+```
+Через n количество времени появляются новые объекты
+```csharp
+private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer<=0)
+        {
+            SpawnObject();
+            timer = 2;
+        }
+    }
+```
+Непосредственно алгоритм создания объекта
+```csharp
+public void SpawnObject()
+    {
+      //Задаются координаты создания объекта
+        CoordinatesSpawn();
+      //Создание объекта
+        deleteObj = Instantiate(fallingObject, new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
+      //Внесение в иерархию Canvas  
+        deleteObj.transform.SetParent(canvas.transform);
+        deleteObj.SetActive(true);
+    }
+```
