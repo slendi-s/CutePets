@@ -51,3 +51,29 @@ public void SpawnObject()
         deleteObj.SetActive(true);
     }
 ```
+## Кухня
+В локации Кухня, чтобы пополнить индикатор потребности, необходимо нажать на кнопку "Food"
+
+![screen](https://sun9-47.userapi.com/ncPMomGdLG0qIZB-szR0KIfpQtyRr5_Y4vRolg/PLBX-yr0hIA.jpg)
+
+Алгоритм пополнения индикатора потребности
+```csharp
+private void Update()
+    {
+    //Если срабатывает триггер
+        if (StartGame.changeFood)
+        {
+        //Заполняется индикатор
+          iconfood.fillAmount += 0.25f;
+        //Выключается триггер
+          StartGame.changeFood = false;
+        //Изменяется вид еды
+          ChangeFoodTexture();
+        //Выдача опыта
+          if (iconfood.fillAmount <= 0.75f)
+          {
+                XPProcess.giveexpforgame = true;
+          }
+        }
+    }
+```
