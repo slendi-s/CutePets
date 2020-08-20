@@ -92,3 +92,28 @@ private void Update()
         }
     }
 ```
+## Кабинет
+В кабинете, чтобы повысить индикатор знаний, необходимо пройти мини-игру, где нужно решать примеры
+
+![screen](https://sun9-51.userapi.com/72pdRXrmsERwIjdEi4RvVR6flFqHmUHS6ZEM6g/6mfyWvSudQ0.jpg)
+
+Чтобы решить пример, нужно вычислять заданные примеры, перетаскивая квадраты в соответствующие ячейки
+Для реализации данной мини игры были подключены 3 интерфейса
+```csharp
+public class Drag_Hand : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+```
+Интерфейс OnBeginDrag необходим для запоминания начальных позиций, в случае неудачи, можно вернуть квадрат на начальное положение
+```charp
+public void OnBeginDrag(PointerEventData eventData)
+    {
+    //Запоминаем объект
+        itemBeingDragged = gameObject;
+    //Запоминаем позицию объекта
+        startPosition = transform.position;
+    //Запоминаем объект в иерархии
+        startParent = transform.parent;
+    //Выносим объект из CanvasGroup
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
+```
+
