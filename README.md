@@ -139,6 +139,23 @@ public void OnEndDrag(PointerEventData eventData)
         transform.position = startPosition;
     }
 ```
+При запуске сцены, вычисляется следующее
+```csharp
+private void StartGame()
+    {
+    // Обнуляются результаты
+        Reset();
+    // Выбирается метод(+,-,*,/)
+        ChoiseMethod();
+    // Запоминаем ответ
+        comparisonResultExample1 = resultExample;
+    // Выводим пример
+        exampleText1.text = writeText;
+    // Запоминаем ответ для комбинации*
+        coderesult1 = resultExample;
+    }
+```
+> **Примечание** * - Алгоритм такой, чтобы победить необходимо собрать комбинацию правильного ответа. 
 Генерация прмеров происходит через оператор Case
 ```csharp
 //Переменная method имеет случайное число от 1 до 4
