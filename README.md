@@ -179,7 +179,7 @@ switch (method)
               // Вывод примера
                 writeText = string.Format("{0} + {1} =",term1,term2);
                 break;
-        //  Вычетание
+        //  Вычитание
             case 2:
                 resultExample = term1 - term2;
                 writeText = string.Format("{0} - {1} =", term1, term2);
