@@ -7,6 +7,26 @@
 Главная задача,поддерживать основные потребности питомца. В игре 5 локаций, каждая из локаций отвечает за свою потребность.
 ## Диаграмма предметной области
 ![diagram](https://sun9-16.userapi.com/t23h4Vc012vXI6xLIPr4LOHkddYtQwNgDgDTdw/BK_Q3INksvg.jpg)
+## Индикаторы
+Вычисление значения индикаторов выполняется следующим алгоритмом
+```csharp
+    if (PlayerPrefs.HasKey("LastSession"))
+        {
+        // Вычитается время отсутствия 
+            TimeSpan ts = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString("LastSession"));
+        // Вывод сообщения, где изображено сколько отсутствовал игрок
+            print(string.Format("Вы отсутстовали: {0} дней, {1} часов, {2} минут, {3} секунд", 
+                ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
+        // Запоминаем значение
+            SubtractionTime = ts;
+        }
+    public void Start()
+        {
+        // Вычисление значения индикатора
+        FillIconBall.fillAmount = FillIconBall.fillAmount - 
+            ((float)ct.SubtractionTime.TotalSeconds / countBarBall);
+        }
+```
 ## Игровая комната
 В игровой комнате, необходимо ловить различные продукты в корзину за определенное время, по окончанию времени выдается опыт и валюта, а так же шкала потребности заполняется.
 
