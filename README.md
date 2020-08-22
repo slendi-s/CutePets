@@ -139,3 +139,39 @@ public void OnEndDrag(PointerEventData eventData)
         transform.position = startPosition;
     }
 ```
+Генерация прмеров происходит через оператор Case
+```csharp
+//Переменная method имеет случайное число от 1 до 4
+switch (method)
+        {
+        //  Сложение
+            case 1:
+                  
+              // Вычисление результата
+                resultExample = term1 + term2;
+              // Вывод примера
+                writeText = string.Format("{0} + {1} =",term1,term2);
+                break;
+        //  Вычетание
+            case 2:
+                resultExample = term1 - term2;
+                writeText = string.Format("{0} - {1} =", term1, term2);
+                break;
+        // Умножение
+            case 3:
+                resultExample = term1 * term2;
+                writeText = string.Format("{0} * {1} =", term1, term2);
+                break;
+        //  Деление
+            case 4:
+              // Если делитель равен нулю, генерируем новые числа
+                while (term1 % term2 != 0)
+                {
+                    term1 = Random.Range(0, 10);
+                    term2 = Random.Range(0, 10);
+                }
+                resultExample = term1 / term2;
+                writeText = string.Format("{0} / {1} =", term1, term2);
+                break;
+        }
+```
