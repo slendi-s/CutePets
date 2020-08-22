@@ -202,3 +202,6 @@ switch (method)
                 break;
         }
 ```
+## Уборная
+Алгоритм пополнения индикатора в уборной аналогичен, пополнению индикатора на кухне
+![screen](https://sun9-56.userapi.com/wYLIcwi9z5m-UEZlsj9ECtbrqwBXxDZdv5lOMg/3s5lyGCulCI.jpg)
